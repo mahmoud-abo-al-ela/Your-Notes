@@ -213,6 +213,10 @@ input {
   background: var(--primary-200);
 }
 
+.back {
+  background: #7C8495 !important;
+}
+
 .btn-hipster:hover {
   color: var(--primary-200);
   background: var(--primary-700);

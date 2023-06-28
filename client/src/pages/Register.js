@@ -11,7 +11,7 @@ const initialState = {
   password: "",
   confirmPassword: "",
   phone: "",
-  birthday: "",
+  birthdate: "",
   isMember: false,
   isSignUp: false,
 };
@@ -34,6 +34,7 @@ const Register = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  // eslint-disable-next-line no-unused-vars
   let missingFields = false;
 
   const submitFirstPage = () => {
@@ -49,9 +50,9 @@ const Register = () => {
   };
 
   const submitSecondPage = () => {
-    const { username, phone, birthday } = values;
+    const { username, phone, birthdate } = values;
 
-    if (!username || !phone || !birthday) {
+    if (!username || !phone || !birthdate) {
       missingFields = true;
       displayAlert(t("Register.values"));
       return;
@@ -63,7 +64,7 @@ const Register = () => {
       confirmPassword: values.confirmPassword,
       username,
       phone,
-      birthday,
+      birthdate,
     };
 
     setupUser({
@@ -209,7 +210,7 @@ const Register = () => {
                   <FormRow
                     type="date"
                     name="birthdate"
-                    value={values.birthday}
+                    value={values.birthdate}
                     inputHandler={inputHandler}
                   />
                   <button
@@ -223,14 +224,14 @@ const Register = () => {
                   {values.isSignUp && (
                     <button
                       type="button"
-                      className="btn btn-block"
+                      className="btn btn-block back"
                       onClick={toggleSign}
                     >
                       <h5>{t("Register.back")}</h5>
                     </button>
                   )}
                   <p>
-                    {t("Register.haveAccount")}{" "}
+                    {t("Register.haveaccount")}{" "}
                     <button
                       type="button"
                       className="member-btn"

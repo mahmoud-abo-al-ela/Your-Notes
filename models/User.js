@@ -29,7 +29,7 @@ const UserSchema = new Schema({
     maxlength: 15,
     trim: true,
   },
-  birthday: {
+  birthdate: {
     type: Date,
     required: [true, "Please provide a birthday"],
   },

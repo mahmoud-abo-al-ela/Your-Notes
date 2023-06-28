@@ -3,7 +3,7 @@ import Wrapper from "../assets/wrappers/SmallProfile";
 import { useAppContext } from "../context/appContext";
 import { useTranslation } from "react-i18next";
 const SmallProfile = () => {
-  const { modifyUser, logoutUser, user } = useAppContext();
+  const { logoutUser, user } = useAppContext();
   const { t } = useTranslation();
   return (
     <Wrapper>

@@ -6,24 +6,29 @@ import { useTranslation } from "react-i18next";
 const Profile = () => {
   const { user, showAlert, displayAlert, updateUser, isLoading } =
     useAppContext();
-  const setFormattedBirthday = (isoDate) => {
-    const formattedDate = isoDate.slice(0, 10);
-    return formattedDate;
+  const setFormattedBirthdate = (isoDate) => {
+    if (isoDate) {
+      const formattedDate = isoDate.slice(0, 10);
+      return formattedDate;
+    }
+    return "";
   };
 
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState();
   const [phone, setPhone] = useState(user.phone);
-  const [birthday, setBirthday] = useState(setFormattedBirthday(user.birthday));
+  const [birthdate, setBirthdate] = useState(
+    setFormattedBirthdate(user.birthdate)
+  );
   const { t } = useTranslation();
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!username || !email || !password || !birthday || !phone) {
+    if (!username || !email || !password || !birthdate || !phone) {
       displayAlert(t("modify.failed"));
       return;
     }
-    updateUser({ username, email, password, birthday, phone });
+    updateUser({ username, email, password, birthdate, phone });
   };
   return (
     <Wrapper>
@@ -60,8 +65,8 @@ const Profile = () => {
           <FormRow
             type="date"
             name="birthdate"
-            value={birthday}
-            inputHandler={(e) => setBirthday(e.target.value)}
+            value={birthdate}
+            inputHandler={(e) => setBirthdate(e.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-block" disabled={isLoading}>

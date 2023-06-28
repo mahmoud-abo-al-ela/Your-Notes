@@ -4,7 +4,7 @@ import { BadRequestError, unAuthenticatedError } from "../errors/index.js";
 import i18next from "../i18n.js";
 
 const register = async (req, res) => {
-  const { username, email, password, confirmPassword, phone, birthday } =
+  const { username, email, password, confirmPassword, phone, birthdate } =
     req.body;
 
   if (
@@ -13,7 +13,7 @@ const register = async (req, res) => {
     !password ||
     !confirmPassword ||
     !phone ||
-    !birthday
+    !birthdate
   ) {
     throw new BadRequestError(i18next.t("Register:values"));
   }
@@ -25,13 +25,15 @@ const register = async (req, res) => {
     email,
     password,
     phone,
-    birthday,
+    birthdate,
   });
   const token = user.createJWT();
   res.status(StatusCodes.CREATED).json({
     user: {
       username: user.username,
       email: user.email,
+      phone: user.phone,
+      birthdate: user.birthdate,
     },
     token,
   });
@@ -57,8 +59,8 @@ const login = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const { username, email, password, phone, birthday } = req.body;
-    if (!email || !username || !password || !phone || !birthday) {
+    const { username, email, password, phone, birthdate } = req.body;
+    if (!email || !username || !password || !phone || !birthdate) {
       throw new BadRequestError(i18next.t("Register:values"));
     }
 
@@ -68,7 +70,7 @@ const updateUser = async (req, res) => {
     user.email = email;
     user.password = password;
     user.phone = phone;
-    user.birthday = birthday;
+    user.birthdate = birthdate;
 
     await user.save();
 

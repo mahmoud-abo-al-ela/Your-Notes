@@ -1,6 +1,6 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/SharedLayout";
-import { NavBar, Background } from "../../components";
+import { NavBar } from "../../components";
 const SharedLayout = () => {
   return (
     <Wrapper>
