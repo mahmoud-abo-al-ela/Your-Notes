@@ -8,6 +8,10 @@ const NoteSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 export default mongoose.model("Note", NoteSchema);

@@ -9,8 +9,8 @@ const initialState = {
 
 const Home = () => {
   const [note, setNote] = useState(initialState);
-  const { createNote, getNote, deleteNote, updateNote } = useAppContext();
-  const [notes, setNotes] = useState([]);
+  const { createNote, getNote, deleteNote, updateNote, user } = useAppContext();
+  const [notes, setNotes] = useState(null);
   const [filter, setFilter] = useState("all");
   const { t } = useTranslation();
   useEffect(() => {
@@ -43,7 +43,8 @@ const Home = () => {
   const handleAddNote = async () => {
     const { title } = note;
     if (title.trim() !== "") {
-      await createNote(title);
+      const userId = user._id;
+      await createNote(title, userId);
       setNote({ title: "" });
       fetchData();
     } else {
@@ -75,12 +76,19 @@ const Home = () => {
     }
   };
 
+  if (notes === null) {
+    // Render a loading state or placeholder while notes are being fetched
+    return <div>Loading...</div>;
+  }
+
   const filteredNotes =
-    filter === "all"
-      ? notes
-      : filter === "active"
-      ? notes.filter((note) => !note.isCompleted)
-      : notes.filter((note) => note.isCompleted);
+    Array.isArray(notes) && notes.length > 0
+      ? filter === "all"
+        ? notes
+        : filter === "active"
+        ? notes.filter((note) => !note.isCompleted)
+        : notes.filter((note) => note.isCompleted)
+      : [];
 
   const totalNotes = notes.length;
   const completedNotes = notes.filter((note) => note.isCompleted).length;

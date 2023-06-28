@@ -119,16 +119,22 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const createNote = async (title) => {
-    const res = await axios.post("/api/v1/notes/createNote", { title });
-
-    console.log(res);
+  const createNote = async (title, userId) => {
+    try {
+      const res = await authFetch.post("/notes/createNote", {
+        title,
+        userId,
+      });
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const getNote = async () => {
     console.log("Fetching notes...");
     try {
-      const res = await axios.get("/api/v1/notes/getNote");
+      const res = await authFetch.get("/notes/getNote");
       const allNotes = res.data;
       console.log(allNotes);
       return allNotes;

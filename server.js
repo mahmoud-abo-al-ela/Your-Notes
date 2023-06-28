@@ -9,6 +9,7 @@ import connectDB from "./db/connect.js";
 import authRouter from "./routes/authRoutes.js";
 import notesRouter from "./routes/notesRoutes.js";
 import langRouter from "./routes/langRoutes.js";
+
 import morgan from "morgan";
 
 const app = express();

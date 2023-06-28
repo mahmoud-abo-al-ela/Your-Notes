@@ -1,4 +1,5 @@
 import { StatusCodes } from "http-status-codes";
+import i18next from "../i18n.js";
 const errorHandlerMiddleware = (err, req, res, next) => {
   console.error(err);
   const defaultErrors = {
@@ -13,7 +14,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
   }
   if (err.code && err.code === 11000) {
     defaultErrors.statusCodes = StatusCodes.BAD_REQUEST;
-    defaultErrors.msg = `${Object.keys(err.keyValue)} is already exist`;
+    defaultErrors.msg = i18next.t("Register:exist");
   }
   res.status(defaultErrors.statusCodes).json({ msg: defaultErrors.msg });
 };

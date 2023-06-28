@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  margin: auto;
   width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-height: 70vh;
+  max-height: 67vh;
+  bottom: 15vh;
   .top {
     display: flex;
     width: 100%;
@@ -83,8 +82,6 @@ const Wrapper = styled.section`
 
   @media (max-width: 425px) {
     width: 90%;
-    max-height: 80vh;
-    top: 55%;
     .notes {
       width: 100%;
     }
@@ -104,7 +101,6 @@ const Wrapper = styled.section`
 
   @media (min-width: 426px) and (max-width: 900px) {
     width: 75%;
-    max-height: 75vh;
     .notes {
       width: 100%;
     }

@@ -34,6 +34,7 @@ const register = async (req, res) => {
       email: user.email,
       phone: user.phone,
       birthdate: user.birthdate,
+      _id: user._id,
     },
     token,
   });

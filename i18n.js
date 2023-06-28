@@ -7,6 +7,7 @@ const translations = {
       notpassword: "Wrong Password",
       notmatch: "Password doesn't match",
       values: "Please provide all values",
+      exist: "Email is alredy exists",
     },
   },
   ar: {
@@ -15,6 +16,7 @@ const translations = {
       notpassword: "كلمة المرور غير صحيحة",
       notmatch: "كلمة المرور غير متطابقة",
       values: "يرجى ادخال جميع القيم",
+      exist: "البريد الالكتروني مسجل بالفعل",
     },
   },
 };

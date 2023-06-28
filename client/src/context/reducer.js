@@ -10,6 +10,7 @@ import {
   UPDATE_USER_ERROR,
 } from "./actions";
 import { initialState } from "./appContext";
+
 const reducer = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
     return {
@@ -36,6 +37,7 @@ const reducer = (state, action) => {
       isLoading: false,
       user: action.payload.user,
       token: action.payload.token,
+      userId: action.payload.user.userId,
       showAlert: true,
       alertType: "success",
       alertText: action.payload.alertText,
@@ -55,9 +57,9 @@ const reducer = (state, action) => {
       ...initialState,
       token: null,
       user: null,
+      userId: null,
     };
   }
-
   if (action.type === UPDATE_USER_BEGIN) {
     return { ...state, isLoading: true };
   }
@@ -67,6 +69,7 @@ const reducer = (state, action) => {
       isLoading: false,
       user: action.payload.user,
       token: action.payload.token,
+      userId: action.payload.user.userId,
       showAlert: true,
       alertType: "success",
       alertText: action.payload.alertText,
@@ -82,7 +85,7 @@ const reducer = (state, action) => {
     };
   }
 
-  throw new Error(`no such action: ${action.type}`);
+  throw new Error(`No such action: ${action.type}`);
 };
 
 export default reducer;

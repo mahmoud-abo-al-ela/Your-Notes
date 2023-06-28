@@ -4,7 +4,8 @@ import Note from "../models/Note.js";
 const createNote = async (req, res) => {
   try {
     const title = req.body.title;
-    const noteCreated = new Note({ title: title });
+    const userId = req.user.userId;
+    const noteCreated = new Note({ title: title, userId: userId });
     noteCreated.save();
     res.status(StatusCodes.CREATED).json({ noteCreated });
   } catch (error) {
@@ -12,8 +13,15 @@ const createNote = async (req, res) => {
   }
 };
 const getNote = async (req, res) => {
-  const allNotes = await Note.find({});
-  res.status(StatusCodes.OK).json(allNotes);
+  try {
+    const allNotes = await Note.find({ userId: req.user.userId });
+    res.status(StatusCodes.OK).json(allNotes);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ error: "Internal Server Error" });
+  }
 };
 const updateNote = async (req, res) => {
   const noteId = req.params.id;
