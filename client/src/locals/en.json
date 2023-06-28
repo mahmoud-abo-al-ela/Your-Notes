@@ -1,0 +1,45 @@
+{
+  "navbar": {
+    "language": "En",
+    "dropdown": {
+      "name": "Hi",
+      "btn-1": "Modify User Info",
+      "btn-2": "Logout"
+    }
+  },
+  "Register": {
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "ConfirmPassword",
+    "phone": "Phone",
+    "birthdate": "Birthdate",
+    "login": "Login",
+    "signup": "Sign Up",
+    "complete": "Complate Sign Up",
+    "back": "Back",
+    "haveaccount": "Have an account!",
+    "donthave": "Don't have an account?",
+    "success": "Successful. Redirecting...",
+    "notemail": "Email doesnt exist",
+    "notpassword": "Wrong Password",
+    "notmatch": "Password doesn't match",
+    "values": "Please provide all values"
+  },
+  "notes": {
+    "input": "Add Note...",
+    "btn": "Add",
+    "items": "items",
+    "all": "All",
+    "completed": "Conmpleted",
+    "active": "Active",
+    "clearcompleted": "Clear completed"
+  },
+  "modify": {
+    "title": "Modify User Information",
+    "btn-1": "Please wait..",
+    "btn-2": "Save changes",
+    "failed": "Please provide all values!",
+    "success": "Profile Updated"
+  }
+}
